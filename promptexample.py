@@ -1,9 +1,12 @@
-from openai import OpenAI
-client = OpenAI()
+import OpenAI from "openai";
 
-response = client.chat.completions.create(
-  model="gpt-4-turbo",
-  messages=[
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const response = await openai.chat.completions.create({
+  model: "gpt-4-turbo",
+  messages: [
     {
       "role": "system",
       "content": [
@@ -32,13 +35,13 @@ response = client.chat.completions.create(
       ]
     }
   ],
-  response_format={
+  response_format: {
     "type": "text"
   },
-  temperature=1,
-  max_completion_tokens=2048,
-  top_p=1,
-  frequency_penalty=0,
-  presence_penalty=0,
-  store=True
-)
+  temperature: 1,
+  max_completion_tokens: 2048,
+  top_p: 1,
+  frequency_penalty: 0,
+  presence_penalty: 0,
+  store: true
+});
